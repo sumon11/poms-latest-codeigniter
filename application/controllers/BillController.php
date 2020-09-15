@@ -108,4 +108,8 @@ class BillController extends My_Controller {
 		$this->load->view('bill/courses',$data);
 
 	}
+
+	public function test(){
+		
+	}
 }
