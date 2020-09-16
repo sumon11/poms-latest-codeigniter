@@ -109,7 +109,5 @@ class BillController extends My_Controller {
 
 	}
 
-	public function test(){
-		
-	}
+
 }

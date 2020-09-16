@@ -1,4 +1,4 @@
-
+<input type = "hidden" id = "baseUrl" value="<?= base_url();?>">
 <div class="row clearfix">
 	<div class="col-md-12">
 		<a href="<?= base_url();?>create_bills" class = "btn btn-info"><i class="material-icons">add</i>Add New Bill</a>
@@ -101,8 +101,9 @@
                                                 </td>
                                                 <td>
                                                     <span><a href="<?= base_url();?>edit_bills/<?= $val['id'];?>" class="btn btn-primary btn-xs"><i class="material-icons">create</i></a></span>
+                                                    
+                                                    <span><a style="coursor:pointer;" class="billsView btn btn-info btn-xs" id = "<?= $val['id'];?>"><i class="material-icons">remove_red_eye</i></a></span>
                                                     <span><a href="" class="btn btn-danger btn-xs"><i class="material-icons">delete</i></a></span>
-                                                    <span><a href="" class="btn btn-info btn-xs"><i class="material-icons">remove_red_eye</i></a></span>
                                                 </td>
                                             </tr>
                                         <?php }
@@ -121,3 +122,11 @@
             </div>
 
 
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.billsView').click(function(){
+            var billId = $(this).attr('id');
+            alert(billId);
+        });
+    });
+</script>
