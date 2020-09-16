@@ -5,7 +5,7 @@
 	</div>
 </div>
 <div class="clear"></div><br>
-<div class="row clearfix">
+<div class="row clearfix" id = "billDetailsView">
     <div class="col-md-12">
         <?php if($this->session->flashdata('msg_success_update')){?>
             <div class="alert alert-success alert-dismissible" role="alert">
@@ -126,7 +126,17 @@
     $(document).ready(function(){
         $('.billsView').click(function(){
             var billId = $(this).attr('id');
-            alert(billId);
+            var baseUrl = $('#baseUrl').val();
+            $.ajax({
+                type: "POST",
+                url:baseUrl+'BillController/bill_details',
+                data: {billId:billId},
+                success: function(data){
+                    alert(data);
+                    //$('#billDetailsView').html(data);
+                }
+
+            });
         });
     });
 </script>

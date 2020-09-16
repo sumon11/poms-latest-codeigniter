@@ -109,5 +109,12 @@ class BillController extends My_Controller {
 
 	}
 
+	public function bill_details(){
+		$billId = $this->input->post('billId');
+		$data['billInfo'] = $this->bill->get_bill_by_id($billId);
+		echo "<pre>";
+		print_r($billInfo);die();
+	}
+
 
 }
