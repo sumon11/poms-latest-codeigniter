@@ -5,7 +5,7 @@
 	</div>
 </div>
 <div class="clear"></div><br>
-<div class="row clearfix" id = "billDetailsView">
+<div class="row clearfix">
     <div class="col-md-12">
         <?php if($this->session->flashdata('msg_success_update')){?>
             <div class="alert alert-success alert-dismissible" role="alert">
@@ -44,7 +44,7 @@
 
 <!-- Exportable Table -->
             <div class="row clearfix">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id = "billDetailsView">
                     <div class="card">
                         <div class="header">
                             <h2>
@@ -52,17 +52,18 @@
                             </h2>
                        
                         </div>
-                        <div class="body">
+                        <div class="body" >
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable">
                                     <thead>
                                         <tr>
                                             <th>SL</th>
                                             <th>Bill Title</th>
+                                            <th>Instituition</th>
                                             <th>Department</th>
                                             <th>Session</th>
                                             <th>Semester</th>
-                                            <th>Pending From</th>
+                                           
                                             <th>Status</th>
                                             <th>Action</th>
                                             
@@ -72,10 +73,11 @@
                                          <tr>
                                             <th>SL</th>
                                             <th>Bill Title</th>
+                                            <th>Instituition</th>
                                             <th>Department</th>
                                             <th>Session</th>
                                             <th>Semester</th>
-                                            <th>Pending From</th>
+                                            
                                             <th>Status</th>
                                             <th>Action</th>
                                             
@@ -88,10 +90,11 @@
                                             <tr>
                                                 <td><?= $i;?></td>
                                                 <td><?= $val['bTitle'];?></td>
+                                                <td><?= $val['iTitle'];?></td>
                                                 <td><?= $val['dTitle'];?></td>
                                                 <td><?= $val['seTitle'];?></td>
                                                 <td><?= $val['sTitle'];?></td>
-                                                <td><?= $val['date'];?></td>
+                                               
                                                 <td>
                                                     <?php if($val['status'] == 0){?>
                                                         <a href="#" class="btn btn-danger btn-xs">Unpaid</a>
@@ -132,8 +135,8 @@
                 url:baseUrl+'BillController/bill_details',
                 data: {billId:billId},
                 success: function(data){
-                    alert(data);
-                    //$('#billDetailsView').html(data);
+                    //alert(data);
+                    $('#billDetailsView').html(data);
                 }
 
             });

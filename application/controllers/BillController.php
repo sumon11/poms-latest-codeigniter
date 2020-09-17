@@ -28,6 +28,7 @@ class BillController extends My_Controller {
 		$this->data['sessions'] = $this->common->common_query('*','academic_sessions',array('is_active'=>1));
 		$this->data['semesters'] = $this->common->common_query('*','semesters',array('is_active'=>1));
 		$this->data['bills_type'] = $this->common->common_query('*','bill_heads',array('is_active'=>1));
+		$this->data['instituitions'] = $this->common->common_query('*','instituitions',array('is_active'=>1));
 		$this->layout();
 	}
 
@@ -44,6 +45,7 @@ class BillController extends My_Controller {
 				'date'=>date("Y-m-d", strtotime($this->input->post('date'))),
 				'comments'=>$this->input->post('comments'),
 				'course_id'=>$this->input->post('courses'),
+				'instituition_id'=>$this->input->post('colleges'),
 				'created_by'=>$userData[0]['id'],
 				'created_at'=>date('Y-m-d')
 			);
@@ -66,6 +68,7 @@ class BillController extends My_Controller {
 		$this->data['sessions'] = $this->common->common_query('*','academic_sessions',array('is_active'=>1));
 		$this->data['semesters'] = $this->common->common_query('*','semesters',array('is_active'=>1));
 		$this->data['bills_type'] = $this->common->common_query('*','bill_heads',array('is_active'=>1));
+		$this->data['instituitions'] = $this->common->common_query('*','instituitions',array('is_active'=>1));
 		$billInfo = $this->common->common_query('*','bills',array('id'=>$id));
 		$this->data['bill_info'] = $billInfo;
 		$courses = '';
@@ -84,6 +87,7 @@ class BillController extends My_Controller {
 				'no_of_students'=>$this->input->post('no_of_students'),
 				'date'=>date("Y-m-d", strtotime($this->input->post('date'))),
 				'comments'=>$this->input->post('comments'),
+				'instituition_id'=>$this->input->post('colleges'),
 				'course_id'=>$this->input->post('courses'),
 				'modified_by'=>$this->session->userdata('user_id'),
 				'modified_at'=>date('Y-m-d')
@@ -112,8 +116,8 @@ class BillController extends My_Controller {
 	public function bill_details(){
 		$billId = $this->input->post('billId');
 		$data['billInfo'] = $this->bill->get_bill_by_id($billId);
-		echo "<pre>";
-		print_r($billInfo);die();
+
+		$this->load->view('bill/bill_details',$data);
 	}
 
 

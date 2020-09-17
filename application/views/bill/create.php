@@ -31,6 +31,25 @@
                                     </div>
                                 </div>
                                 <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="name">Instituitions</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <select class="form-control" name="colleges"  value="" required>
+                                                    <option value="">--Select Colleges--</option>
+                                                    <?php foreach($instituitions as $val){?>
+                                                        <option value="<?= $val['id'];?>"><?=$val['title'];?></option>
+                                                    <?php }?>
+                                                </select>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
                                      <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
                                         <label for="name">Department</label>
                                     </div>

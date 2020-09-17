@@ -7,6 +7,8 @@
         $date  = '';
         $comments  = '';
         $bill_heads_id = '';
+        $course_id = '';
+        $instituition_id = '';
     if($bill_info){
         $bill_id  = $bill_info[0]['id'];
         $department_id  = $bill_info[0]['department_id'];
@@ -17,6 +19,7 @@
         $comments  = $bill_info[0]['comments'];
         $bill_heads_id = $bill_info[0]['bill_heads_id'];
         $course_id = $bill_info[0]['course_id'];
+        $instituition_id = $bill_info[0]['instituition_id'];
     }
  ?>
 <input type="hidden" name="" id = "baseUrl" value="<?= base_url();?>">
@@ -44,6 +47,26 @@
                                                     <?php foreach($bills_type as $val){
                                                         ?>
                                                         <option value="<?= $val['id'];?>" <?php if($val['id'] == $bill_heads_id){echo "selected";}?>><?=$val['title'];?></option>
+                                                    <?php }?>
+                                                </select>
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="name">Instituition</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <select class="form-control" name="colleges"  value="" required>
+                                                    <option value="">--Select College--</option>
+                                                    <?php foreach($instituitions as $val){
+                                                        ?>
+                                                        <option value="<?= $val['id'];?>" <?php if($val['id'] == $instituition_id){echo "selected";}?>><?=$val['title'];?></option>
                                                     <?php }?>
                                                 </select>
                                                 
