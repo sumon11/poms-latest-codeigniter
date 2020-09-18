@@ -18,7 +18,7 @@ class Bill extends CI_Model{
 		return $query->result_array();
 	}
 	public function get_bill_by_id($billId){
-		$this->db->select('instituitions.title as collegeName,instituitions.short_title as iTitle,courses.title as cTitle, courses.code as cCode,bill_heads.title as bTitle,departments.title as dTitle,semesters.title as sTitle, academic_sessions.title as seTitle,bills.date,bills.status,bills.id,bills.no_of_students,bills.comments');
+		$this->db->select('instituitions.title as collegeName,instituitions.short_title as iTitle,courses.title as cTitle, courses.code as cCode,bill_heads.title as bTitle,departments.title as dTitle,semesters.title as sTitle, academic_sessions.title as seTitle,bills.date,bills.status,bills.id,bills.no_of_students,bills.comments,bills.paid_amount');
 		$this->db->from('bills');
 		$this->db->join('bill_heads','bills.bill_heads_id = bill_heads.id','left');
 		$this->db->join('departments','bills.department_id = departments.id','left');

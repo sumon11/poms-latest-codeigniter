@@ -22,7 +22,7 @@ class UserController extends My_Controller {
 
 	public function user_profile(){
 		$this->data = array();
-		$this->data['userdata'] = $this->session->userdata('userInfo');
+		$this->data['userdata'] = $this->user->get_users_by_id($this->session->userdata('user_id'));
 		$this->page = 'user/profile';
 		$this->layout();
 	}

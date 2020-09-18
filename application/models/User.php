@@ -9,10 +9,27 @@ class User extends CI_Model{
 		return  $insert_id;
 	}
 	public function all_users(){
-		$this->db->select('user.name,user.email,departments.title as dtitle,designations.title as desiTitle');
+		$this->db->select('user.name,user.email,departments.title as dtitle,designations.title as desiTitle,
+			academic_sessions.title as sTtile, semesters.title as semTitle');
 		$this->db->from('user');
 		$this->db->join('departments','user.department_id = departments.id','left');
 		$this->db->join('designations','user.designation_id = designations.id','left');
+		$this->db->join('academic_sessions','user.session_id = academic_sessions.id','left');
+		$this->db->join('semesters','user.semester_id = semesters.id','left');
+		$this->db->where('user.is_active',1);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+	public function get_users_by_id($id){
+		$this->db->select('user.*,departments.title as dtitle,designations.title as desiTitle,
+			academic_sessions.title as sTtile, semesters.title as semTitle');
+		$this->db->from('user');
+		$this->db->join('departments','user.department_id = departments.id','left');
+		$this->db->join('designations','user.designation_id = designations.id','left');
+		$this->db->join('academic_sessions','user.session_id = academic_sessions.id','left');
+		$this->db->join('semesters','user.semester_id = semesters.id','left');
+		$this->db->where('user.id',$id);
 		$this->db->where('user.is_active',1);
 		$query = $this->db->get();
 		return $query->result_array();

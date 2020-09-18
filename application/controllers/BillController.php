@@ -16,6 +16,8 @@ class BillController extends My_Controller {
 	public function index(){
 		$this->data = array();
 		$this->page = 'bill/index';
+		$this->session->set_flashdata('msg_success','');
+		$this->session->set_flashdata('msg_error','');
 		$this->data['bills'] = $this->bill->get_all_bill($this->session->userdata('user_id'));
 		$this->layout();
 	}
@@ -117,6 +119,15 @@ class BillController extends My_Controller {
 		$billId = $this->input->post('billId');
 		$data['billInfo'] = $this->bill->get_bill_by_id($billId);
 
+		$this->load->view('bill/bill_details',$data);
+	}
+
+	public function bill_paid(){
+		$billId = $this->input->post('billId');
+		$paidAmount = $this->input->post('paidAmount');
+		
+		$this->common->update_by_id('bills',$billId,array('status'=>1,'paid_amount'=>$paidAmount));
+		$data['billInfo'] = $this->bill->get_bill_by_id($billId);
 		$this->load->view('bill/bill_details',$data);
 	}
 

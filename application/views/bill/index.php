@@ -2,6 +2,7 @@
 <div class="row clearfix">
 	<div class="col-md-12">
 		<a href="<?= base_url();?>create_bills" class = "btn btn-info"><i class="material-icons">add</i>Add New Bill</a>
+        <a href="<?= base_url();?>bills" class = "btn btn-success billList"><i class="material-icons">add</i>Bill List</a>
 	</div>
 </div>
 <div class="clear"></div><br>
@@ -97,11 +98,13 @@
                                                
                                                 <td>
                                                     <?php if($val['status'] == 0){?>
-                                                        <a href="#" class="btn btn-danger btn-xs">Unpaid</a>
+                                                        <a href="#" class="btn btn-danger btn-xs" id = "unpaidToPaid">Unpaid</a>
                                                     <?php }else{?>
                                                         <a href="#" class="btn btn-success btn-xs">Paid</a>
                                                     <?php }?>
+
                                                 </td>
+                                                
                                                 <td>
                                                     <span><a href="<?= base_url();?>edit_bills/<?= $val['id'];?>" class="btn btn-primary btn-xs"><i class="material-icons">create</i></a></span>
                                                     
@@ -127,6 +130,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+        $('.billList').hide();
         $('.billsView').click(function(){
             var billId = $(this).attr('id');
             var baseUrl = $('#baseUrl').val();
@@ -137,6 +141,7 @@
                 success: function(data){
                     //alert(data);
                     $('#billDetailsView').html(data);
+                    $('.billList').show();
                 }
 
             });

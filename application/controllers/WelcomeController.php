@@ -65,6 +65,7 @@ class WelcomeController extends My_Controller {
 			if($checkInfo){
 				$this->session->set_userdata('userInfo',$checkInfo);
 				$this->session->set_userdata('user_id',$checkInfo[0]['id']);
+				$this->session->set_userdata('user_type',$checkInfo[0]['user_type']);
 				redirect(base_url().'dashboard', 'refresh');
 			
 			}else{
