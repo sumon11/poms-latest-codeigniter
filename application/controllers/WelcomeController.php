@@ -92,6 +92,7 @@ class WelcomeController extends My_Controller {
 			$this->data['userdata'] = $userData;
 			$this->page = 'user/others_dashboard';
 		}else{
+			$this->data['userdata'] = $userData;
 			$this->page = 'user/others_dashboard';
 		}
 		

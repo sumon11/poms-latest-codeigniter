@@ -9,7 +9,8 @@ class UserController extends My_Controller {
         $this->load->model('user');
         $this->load->model('designation');
         $this->load->model('department');
-
+        $this->load->model('common');
+        $this->load->model('bill');
     }
      
 
@@ -78,5 +79,12 @@ class UserController extends My_Controller {
 		}
 		$this->layout();
 	
+	}
+
+	public function bill_list(){
+		$userId = $this->input->post('userId');
+		$data['paid_bill'] = $this->bill->get_all_bill($userId,1);
+		$data['unpaid_bill'] = $this->bill->get_all_bill($userId,0);
+		$this->load->view('user/bill_info',$data);
 	}
 }
