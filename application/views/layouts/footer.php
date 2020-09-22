@@ -4,7 +4,7 @@
 
     
     
-
+    <input type="hidden" name="" id = "baseUrl" value="<?= base_url();?>">
     <!-- Bootstrap Core Js -->
     <script src="<?php echo base_url("resources/plugins/bootstrap/js/bootstrap.js");?>"></script>
 
@@ -47,32 +47,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
-        <script type="text/javascript">
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(document).on("change",'#changeLanguage',function(){
+            var languageId = $(this).val();
+            var baseUrl = $('#baseUrl').val();
+            $.ajax({
+                type: "POST",
+                url:baseUrl+'UserController/switchLang',
+                data: {languageId:languageId},
+                success: function(data){
+                    location.reload();
+                }
+
+            });
+        });
+    });
+
+    <?php if($this->session->flashdata('success')){ ?>
+
+        toastr.success("<?php echo $this->session->flashdata('success'); ?>");
+
+    <?php }else if(isset($error)){  ?>
+
+        toastr.error("<?php echo $error; ?>");
+
+    <?php }else if(isset($warning)){  ?>
+
+        toastr.warning("<?php echo $warning;?>");
+
+    <?php }else if(isset($info)){  ?>
+
+        toastr.info("<?php echo $info;?>");
+
+    <?php } ?>
 
 
-        <?php if($this->session->flashdata('success')){ ?>
 
-            toastr.success("<?php echo $this->session->flashdata('success'); ?>");
+    
 
-        <?php }else if(isset($error)){  ?>
-
-            toastr.error("<?php echo $error; ?>");
-
-        <?php }else if(isset($warning)){  ?>
-
-            toastr.warning("<?php echo $warning;?>");
-
-        <?php }else if(isset($info)){  ?>
-
-            toastr.info("<?php echo $info;?>");
-
-        <?php } ?>
-
-
-
-        
-
-        </script>
+    </script>
 </body>
 
 </html>

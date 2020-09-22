@@ -1,4 +1,4 @@
-
+<h1><?php echo $this->lang->line('welcome') ?></h1>
 
 <input type="hidden" name="" id = "baseUrl" value="<?= base_url();?>">
 <input type="hidden" name="" id = "userId" value="<?= $this->session->userdata('user_id');?>">

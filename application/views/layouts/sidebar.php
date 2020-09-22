@@ -41,6 +41,12 @@
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
                 <a class="navbar-brand" href="index.html">POMS - Personal Office Management System</a>
+                <select style="margin-top:3%;" id = "changeLanguage">
+                    <option value="">--Select Language--</option>
+                    <option value="english">English</option>
+                    <option value="french">French</option>
+                    <option value="german">German</option>
+                </select>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -255,9 +261,9 @@
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
                             <li><a href="<?= base_url();?>profile"><i class="material-icons">person</i>Profile</a></li>
-                            <li><a href="<?php echo base_url("UserController/switchLang/french"); ?>">French</a></li>
+                            <!-- <li><a href="<?php echo base_url("UserController/switchLang/french"); ?>">French</a></li>
                             <li><a href="<?php echo base_url("UserController/switchLang/german"); ?>">German</a></li>
-                            <li><a href="<?php echo base_url("UserController/switchLang/english"); ?>">English</a></li>
+                            <li><a href="<?php echo base_url("UserController/switchLang/english"); ?>">English</a></li> -->
                             <li role="separator" class="divider"></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>

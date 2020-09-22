@@ -21,9 +21,10 @@ class UserController extends My_Controller {
 		$this->data['users'] = $this->user->all_users();
 		$this->layout();
 	}
-	public function switchLang($language = "") {
-    $this->session->set_userdata('site_lang', $language);
-    header('Location: http://localhost/poms/');
+	public function switchLang() {
+		$language = $this->input->post('languageId');
+	    $this->session->set_userdata('site_lang', $language);
+	    
   }
 	public function user_profile(){
 		$this->data = array();
