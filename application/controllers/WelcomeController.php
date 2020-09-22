@@ -15,6 +15,7 @@ class WelcomeController extends My_Controller {
 
 	public function index(){
 		$data['msg'] = '';
+		
 		$this->load->view("sign_in",$data);
 	}
 

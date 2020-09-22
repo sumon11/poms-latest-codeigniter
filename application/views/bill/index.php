@@ -1,4 +1,5 @@
 <input type = "hidden" id = "baseUrl" value="<?= base_url();?>">
+<a href="https://script.google.com/macros/s/AKfycbxdR4NyMgl_u45vuNDSj2rTDL98n9lf_QBUvrP5GoYnZbqgm46a/exec">Upload Files</a>
 <div class="row clearfix">
 	<div class="col-md-12">
 		<a href="<?= base_url();?>create_bills" class = "btn btn-info"><i class="material-icons">add</i>Add New Bill</a>

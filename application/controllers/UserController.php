@@ -16,11 +16,15 @@ class UserController extends My_Controller {
 
 	public function index(){
 		$this->data = array();
+		$this->session->set_userdata('site_lang',  "english");
 		$this->page = 'user/index';
 		$this->data['users'] = $this->user->all_users();
 		$this->layout();
 	}
-
+	public function switchLang($language = "") {
+    $this->session->set_userdata('site_lang', $language);
+    header('Location: http://localhost/poms/');
+  }
 	public function user_profile(){
 		$this->data = array();
 		$this->data['userdata'] = $this->user->get_users_by_id($this->session->userdata('user_id'));
